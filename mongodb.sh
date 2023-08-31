@@ -26,20 +26,20 @@ fi
 }
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
-VALIDATE $? "copy the mongo db repo into yum repos d" 
+VALIDATE $? "copy the mongo db repo into yum repos d $G" 
 
 yum install mongodb-org -y &>>$LOGFILE
-VALIDATE $? "Mongo db installed" 
+VALIDATE $? "Mongo db installed $G" 
 
 systemctl enable mongod &>>$LOGFILE
-VALIDATE $? "Enable mongo db" 
+VALIDATE $? "Enable mongo db $G" 
 
 systemctl start mongod &>>$LOGFILE
-VALIDATE $? "start mongo db" 
+VALIDATE $? "start mongo db $G" 
 
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>$LOGFILE
-VALIDATE $? "replace the old ip to new ip" 
+VALIDATE $? "replace the old ip to new ip $G" 
 
 systemctl restart mongod &>>$LOGFILE
-VALIDATE $? "restart mongodb" 
+VALIDATE $? "restart mongodb $G" 
  
