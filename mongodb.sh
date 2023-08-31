@@ -8,25 +8,25 @@ FILENAME=$0
 DATE=$(date +%F)
 LOGFILE=/tmp/$DATE-$FILENAME
 
-if [ USERID -ne 0 ];
+if [ $USERID -ne 0 ];
 then 
     echo -e "Error : $R pls run with root user $N"
-    exit
+    exit 1
 fi
 
 VALIDATE()
 {
-    if [ $1 -ne 0 ]
+    if [ $1 -ne 0 ];
 then 
-    echo -e "$R failure $N"
+    echo -e "$2 ... $R failure $N"
     exit 1
 else
-    echo -e "$G success $N"
+    echo -e "$2 ... $G success $N"
 fi
 }
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
-VALIDATE $? "copy the mongo db repo into yum repos d $G" 
+VALIDATE $? "copy the mongo db repo into yum repos d" 
 
 yum install mongodb-org -y &>>$LOGFILE
 VALIDATE $? "Mongo db installed $G" 
