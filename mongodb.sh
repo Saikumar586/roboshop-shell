@@ -8,7 +8,7 @@ FILENAME=$0
 DATE=$(date +%F)
 LOGFILE=/tmp/$DATE-$FILENAME
 
-if [ $USERID -ne 0 ];
+if [ $USERID -ne 0 ]
 then 
     echo -e "Error : $R pls run with root user $N"
     exit 1
