@@ -2,15 +2,15 @@
 
 USERID=$(id -u)
 R="\e[31m" #'\e[0;32m'
-G="\e[32m"
+G="\e[33m"
 N="\e[0m"
 FILENAME=$0
 DATE=$(date +%F)
 LOGFILE=/tmp/$DATE-$FILENAME
 
-if [ USERID -ne 0 ];
+if[ USERID -ne 0 ];
 then 
-    echo -e " Error : $R pls run with root user $N"
+    echo -e "Error : $R pls run with root user $N"
     exit
 fi
 
