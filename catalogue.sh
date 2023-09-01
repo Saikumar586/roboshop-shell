@@ -30,99 +30,62 @@ fi
 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 
-VALIDATE $? " RPM NODESOURCE INSTALLED"
+VALIDATE $? "downloading node setup"
 
 yum install nodejs -y  &>>$LOGFILE
-VALIDATE $? " NodeJs INSTALLED"
 
-# echo "Enter a user name: "
-# read name
-
-# if grep -w $name /etc/passwd > /dev/null
-# then
-#     echo "user $name is on this system."
-# else
-#     echo "user $name does not exist." 
-# fi
-
-# echo "Enter a group name: "
-# read name
-
+VALIDATE $? "installing nodejs"
 
 useradd roboshop &>>$LOGFILE
-#VALIDATE $? " user added"
-
+#VALIDATE $? "add catalogue name roboshop"
 
 mkdir /app &>>$LOGFILE
-#VALIDATE $? " make directory"
 
+#VALIDATE $? "make dir name app"
+curl -L -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
-# echo -n "Enter the username: "
-# # read text
-# # useradd $text
-# if [ $uid -eq 0 ] then 
-#     echo user exist
-# else 
+VALIDATE $? "donwloading zip file"
 
- 
-# echo "Enter directory name"
-# read dirname
-# unzip /tmp/catalogue.zip
-# if [ ! -d "$app" ]
-# then
-#     echo "File doesn't exist. Creating now"
-#     mkdir ./$app
-#     echo "File created"
-# else
-#     echo "File exists"
-# fi
-
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
-
-VALIDATE $? "open the zip file"
-
-cd /app/  &>>$LOGFILE
-VALIDATE $? " change the directory"
-
+cd /app  &>>$LOGFILE
+VALIDATE $? "change directory"
 
 unzip /tmp/catalogue.zip &>>$LOGFILE
-VALIDATE $? " unzip the file"
 
+VALIDATE $? "unzip"
 
 cd /app &>>$LOGFILE
-VALIDATE $? " change dir "
-
+VALIDATE $? "change dir app"
 
 npm install  &>>$LOGFILE
-VALIDATE $? " install NPM "
-
-
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
-VALIDATE $? " copy the catalogue service "
-
+VALIDATE $? "install npm"
+ 
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service  &>>$LOGFILE
+VALIDATE $? "copied catalogue file"
 
 systemctl daemon-reload &>>$LOGFILE
-VALIDATE $? " reload  "
-
+VALIDATE $? "daemon -reload"
 
 systemctl enable catalogue &>>$LOGFILE
-VALIDATE $? " enable "
-
+VALIDATE $? "enable catalogue"
 
 systemctl start catalogue &>>$LOGFILE
-VALIDATE $? "start catalogue  "
+VALIDATE $? "start catalogue"
 
-
-cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
-VALIDATE $? "copy mongo repo  "
-
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo  &>>$LOGFILE
+VALIDATE $? "copy catalogue repo"
 
 yum install mongodb-org-shell -y &>>$LOGFILE
-VALIDATE $? "install mongo  "
+VALIDATE $? "install mongodb"
 
 
 mongo --host mongodb.saidev.world </app/schema/catalogue.js &>>$LOGFILE
-VALIDATE $? " provide host name : "
+VALIDATE $? " host name"
+
+
+
+
+
+
 
 
 
