@@ -25,7 +25,7 @@ else
 fi
 }
 
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
+curl -sL -o https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 VALIDATE $? " RPM NODESOURCE INSTALLED"
 
 yum install nodejs  & >>$LOGFILE
