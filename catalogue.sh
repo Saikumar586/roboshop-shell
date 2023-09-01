@@ -78,7 +78,7 @@ curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zi
 
 VALIDATE $? "open the zip file"
 
-cd /app /  & >>$LOGFILE
+cd /app/  & >>$LOGFILE
 VALIDATE $? " change the directory"
 
 
