@@ -5,7 +5,7 @@ N="\e[0m"
 FILENAME=$0
 DATE=$(date +%F)
 LOGFILE=/tmp/$DATE-$FILENAME
-url=$($curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+#url=$($curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 
 if [ $USERID -ne 0 ]
@@ -25,7 +25,7 @@ else
 fi
 }
 
-$url &>> $LOGFILE
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
 VALIDATE $? " RPM NODESOURCE INSTALLED"
 
 yum install nodejs  &>> $LOGFILE
