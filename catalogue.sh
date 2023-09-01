@@ -86,7 +86,7 @@ unzip /tmp/catalogue.zip &>>$LOGFILE
 VALIDATE $? " unzip the file"
 
 
-cdd /app &>>$LOGFILE
+cd /app &>>$LOGFILE
 VALIDATE $? " change dir "
 
 
