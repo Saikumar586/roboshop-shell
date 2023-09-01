@@ -29,7 +29,7 @@ curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 
 VALIDATE $? " RPM NODESOURCE INSTALLED"
 
-yum install nodejs  & >>$LOGFILE
+yum install nodejs  &>>$LOGFILE
 VALIDATE $? " NodeJs INSTALLED"
 
 # echo "Enter a user name: "
@@ -46,11 +46,11 @@ VALIDATE $? " NodeJs INSTALLED"
 # read name
 
 
-useradd $name & >>$LOGFILE
+useradd roboshop &>>$LOGFILE
 #VALIDATE $? " user added"
 
 
-mkdir /app & >>$LOGFILE
+mkdir /app &>>$LOGFILE
 #VALIDATE $? " make directory"
 
 
@@ -74,51 +74,51 @@ mkdir /app & >>$LOGFILE
 #     echo "File exists"
 # fi
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip & >>$LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "open the zip file"
 
-cd /app/  & >>$LOGFILE
+cd /app/  &>>$LOGFILE
 VALIDATE $? " change the directory"
 
 
-unzip /tmp/catalogue.zip & >>$LOGFILE
+unzip /tmp/catalogue.zip &>>$LOGFILE
 VALIDATE $? " unzip the file"
 
 
-cd /app & >>$LOGFILE
+cd /app &>>$LOGFILE
 VALIDATE $? " change dir "
 
 
-npm install  & >>$LOGFILE
+npm install  &>>$LOGFILE
 VALIDATE $? " install NPM "
 
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service & >>$LOGFILE
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
 VALIDATE $? " copy the catalogue service "
 
 
-systemctl daemon-reload & >>$LOGFILE
+systemctl daemon-reload &>>$LOGFILE
 VALIDATE $? " reload  "
 
 
-systemctl enable catalogue & >>$LOGFILE
+systemctl enable catalogue &>>$LOGFILE
 VALIDATE $? " enable "
 
 
-systemctl start catalogue & >>$LOGFILE
+systemctl start catalogue &>>$LOGFILE
 VALIDATE $? "start catalogue  "
 
 
-cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo & >>$LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 VALIDATE $? "copy mongo repo  "
 
 
-yum install mongodb-org-shell -y & >>$LOGFILE
+yum install mongodb-org-shell -y &>>$LOGFILE
 VALIDATE $? "install mongo  "
 
 
-mongo --host mongodb.saidev.world </app/schema/catalogue.js & >>$LOGFILE
+mongo --host mongodb.saidev.world </app/schema/catalogue.js &>>$LOGFILE
 VALIDATE $? " provide host name : "
 
 
