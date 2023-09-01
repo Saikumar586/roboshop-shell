@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 USERID=$(id -u)
 R="\e[31m" #'\e[0;32m'
 G="\e[33m"
