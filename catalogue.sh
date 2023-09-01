@@ -46,9 +46,11 @@ else
     echo "File exists"
 fi
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip > /app/catalogue.zip
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
+VALIDATE $? "donwloadoing NPMFile"
 
+yum install nodejs 
 
-
+VALIDATE $? "install nodejs"
 
