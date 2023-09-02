@@ -46,7 +46,7 @@ VALIDATE $? "install redis"
 
 systemctl start redis &>>$LOGFILE
 VALIDATE $? "install redis"
-
+ 
 
 
 
