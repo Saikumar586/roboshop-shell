@@ -42,7 +42,7 @@ useradd roboshop &>>$LOGFILE
 mkdir /app &>>$LOGFILE
 
 #VALIDATE $? "make dir name app"
-curl -L -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+curl  -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
 VALIDATE $? "donwloading zip file"
 
