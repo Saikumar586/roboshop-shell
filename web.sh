@@ -54,8 +54,7 @@ VALIDATE $? " unzip the file"
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>$LOGFILE
 VALIDATE $? "coping the services"
 
-
-systemctl restart nginx   $LOGFILE
+systemctl restart nginx   &>>$LOGFILE
 VALIDATE $? " restart nginx file"
 
 
