@@ -26,13 +26,14 @@ aws route53 change-resource-record-sets --hosted-zone-id Z0559164Y728U4VCBF55 --
             "Action": "CREATE",
                         "ResourceRecordSet":
                          {  
-                                    "Name": '$i.$DOMAIN_NAME',
+                                    "Name": "'$i.$DOMAIN_NAME'",
                                     "Type": "A",
                                     "TTL": 1,
-                                 "ResourceRecords":[{ "Value": '$CREATE_INSTANCE'}]
+                                 "ResourceRecords":[{ "Value": "'$CREATE_INSTANCE'"}]
                          }
         }
                         ]
-}'
+}
+'
 done
 
