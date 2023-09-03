@@ -7,6 +7,6 @@ for i in "${NAMES[@]}"
 do 
 {
 
-echo create instances: $i
+echo "create instances: $i"
 
 }
