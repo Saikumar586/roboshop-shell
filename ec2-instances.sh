@@ -10,7 +10,7 @@ do
 
 if [[ $i == "Mongodb" || $i == "mysql" ]]
 then 
-    INSTANCE_TYPE="t3.medium"
+    INSTANCE_TYPE="t2.micro"
 else 
     INSTANCE_TYPE="t2.micro"
 fi
@@ -18,7 +18,7 @@ echo "create $i instance"
    CREATE_INSTANCE=$(aws ec2 run-instances --image-id ami-03265a0778a880afb  --instance-type t2.micro  --security-group-ids sg-0bf973e946668a277 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
 echo "create $i instance ip $CREATE_INSTANCE"
 
-aws route53 change-resource-record-sets --hosted-zone-id Z0559164Y728U4VCBF55 --change-batch '
+aws route53 change-resource-record-sets --hosted-zone-id Z0525532325ZF78I0E7EM --change-batch '
 {
             "Comment": "CREATE A Record ",
             "Changes": [
