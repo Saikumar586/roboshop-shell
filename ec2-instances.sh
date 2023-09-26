@@ -5,7 +5,7 @@ NAMES= $@ #( "Mongodb" "catalogue" "redis" "mysql" "rabbitmq" "user" "cart" "pay
 INSTANCE_TYPE=""
 DOMAIN_NAME=saidev.world
 # if its mongodb or mysql then t3.medium other t2.micro
-for i in "${NAMES[@]}"
+for i in "${}"
 do 
 
 if [[ $i == "Mongodb" || $i == "mysql" ]]
