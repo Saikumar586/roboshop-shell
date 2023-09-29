@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 NAMES= ( "Mongodb" "catalogue" "redis" "mysql" "rabbitmq" "user" "cart" "payment" "shipping" "dispatch" "web" )
 INSTANCE_TYPE=""
 DOMAIN_NAME=saidev.world
