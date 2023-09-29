@@ -17,7 +17,7 @@ echo "create $i instance"
    CREATE_INSTANCE=$(aws ec2 run-instances --image-id ami-03265a0778a880afb  --instance-type t2.micro  --security-group-ids sg-028da1a64b2b90013 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
 echo "create $i instance ip $CREATE_INSTANCE"
 
-aws route53 change-resource-record-sets --hosted-zone-id Z05693643DQZHBZI213XV --change-batch '
+aws route53 change-resource-record-sets --hosted-zone-id Z04175762SE3L0RTYP6WB --change-batch '
 {
             "Comment": "CREATE A Record ",
             "Changes": [
