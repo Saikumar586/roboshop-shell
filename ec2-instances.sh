@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAMES= ( "Mongodb" "catalogue" "redis" "mysql" "rabbitmq" "user" "cart" "payment" "shipping" "dispatch" "web" )
+NAMES=( "Mongodb" "catalogue" "redis" "mysql" "rabbitmq" "user" "cart" "payment" "shipping" "dispatch" "web" )
 INSTANCE_TYPE=""
 DOMAIN_NAME=saidev.world
 # if its mongodb or mysql then t3.medium other t2.micro
